@@ -1,6 +1,5 @@
 pymongo
 requests-cache
-zstandard
 xmlschema
 xmltodict
 lxml

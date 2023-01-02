@@ -1,5 +1,0 @@
-Find all records that match either the subject or language codes.
-
-
-{$or: [{'metadata.dc:subject.@olac:code': 'xsy'}, {'metadata.dc:language.@olac:code': 'xsy'}]}
-
