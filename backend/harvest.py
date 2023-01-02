@@ -47,7 +47,7 @@ def harvest_one(db: OLACDatabase, archive: XMLArchive, force: bool = False) -> b
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Execute the OLAC Harvester')
-    parser.add_argument('--db', type=str, help='The database connection string', required=False, default='mongodb://olacdb:olacdbmonkey@127.0.0.1') 
+    parser.add_argument('--db', type=str, help='The database connection string', required=False, default='mongodb://olacdb:olacdbmonkey@127.0.0.1:27027') 
     parser.add_argument('--harvest', type=str, help='Archives to harverst', required=False, nargs='*', default=None) 
     parser.add_argument('--nuke', help='Nuke the database', required=False, action='store_true')
     parser.add_argument('--force', help='Force harvest', required=False, action='store_true')
