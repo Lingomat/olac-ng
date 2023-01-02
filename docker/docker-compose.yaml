@@ -8,6 +8,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=olac
+    command: mongod --port 27027
     ports:
       - '27027:27027'
     volumes: 
