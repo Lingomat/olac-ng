@@ -1,0 +1,19 @@
+/* @import url('https://fonts.cdnfonts.com/css/segoe-condensed'); */
+
+@tailwind base;
+
+html {
+    scroll-behavior: smooth;
+}
+
+@tailwind components;
+
+.all-prose {
+    @apply prose;
+    --tw-prose-headings: rgb(30 58 138) !important;
+    --bc: black;
+}
+
+@tailwind utilities;
+
+

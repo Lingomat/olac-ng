@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.openarchives.org/OAI/2.0/static-repository" schemaLocation="static-repository.xsd"/>
+    <xs:import namespace="http://www.language-archives.org/OLAC/1.1/" schemaLocation="olac.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+</xs:schema>

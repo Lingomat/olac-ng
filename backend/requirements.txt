@@ -1,0 +1,8 @@
+pymongo
+requests-cache
+zstandard
+xmlschema
+xmltodict
+lxml
+lxml-stubs
+more-itertools

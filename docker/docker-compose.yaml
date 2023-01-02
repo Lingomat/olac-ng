@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: mongodb
+    image: mongo:5.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=olac
+    ports:
+      - '27017:27017'
+    volumes: 
+      - ./data:/data/db
+  
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    depends_on:
+      - db
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ROOT_USER}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ROOT_PASSWORD}
+    ports:
+      - '8081:8081'
+    volumes: 
+      - ./data:/data/db
+    restart: always
+

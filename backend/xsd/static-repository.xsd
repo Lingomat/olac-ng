@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.openarchives.org/OAI/2.0/static-repository" 
+           xmlns:oai="http://www.openarchives.org/OAI/2.0/" 
+           xmlns:sr="http://www.openarchives.org/OAI/2.0/static-repository" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified">
+
+  <!-- OLAC: changes marked - Steven Bird 2002-12-14 -->
+
+  <!-- OLAC: import OLAC version of OAI-PMH -->
+  <xs:import namespace="http://www.openarchives.org/OAI/2.0/"
+     schemaLocation="http://www.language-archives.org/OLAC/1.1/OLAC-PMH.xsd"/>
+
+  <xs:element name="Repository" type="sr:repo"/>
+
+  <xs:complexType name="repo">
+    <xs:sequence>
+      <xs:element name="Identify" type="oai:IdentifyType"/>
+      <xs:element name="ListMetadataFormats" type="oai:ListMetadataFormatsType"/>
+      <xs:element name="ListRecords" type="sr:ListRecordsType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- OLAC: set metadataPrefix to olac -->
+  <xs:complexType name="ListRecordsType">
+   <xs:complexContent>
+    <xs:extension base="oai:ListRecordsType">
+       <xs:attribute name="metadataPrefix" type="oai:metadataPrefixType" fixed="olac"/>
+    </xs:extension>
+   </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

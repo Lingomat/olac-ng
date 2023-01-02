@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import
+    namespace="http://www.openarchives.org/OAI/2.0/"
+    schemaLocation="OAI-PMH.xsd"/>
+  <xs:import
+    namespace="http://www.openarchives.org/OAI/2.0/oai-identifier"
+    schemaLocation="oai-identifier.xsd"/>
+      <xs:import
+    namespace="http://www.language-archives.org/OLAC/1.1/olac-archive"
+    schemaLocation="olac-archive.xsd"/>
+</xs:schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.openarchives.org/OAI/2.0/static-repository" schemaLocation="http://www.language-archives.org/OLAC/1.1/static-repository.xsd" />
+    <xs:import namespace="http://www.language-archives.org/OLAC/1.1/" schemaLocation="http://www.language-archives.org/OLAC/1.1/olac.xsd" />
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://www.language-archives.org/OLAC/1.1/dc.xsd" />
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://www.language-archives.org/OLAC/1.1/dcterms.xsd" />
+    <xs:import namespace="http://childes.talkbank.org/" schemaLocation="http://childes.talkbank.org/childes.xsd" />
+</xs:schema>

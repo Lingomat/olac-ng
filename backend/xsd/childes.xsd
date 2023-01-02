@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns="http://childes.talkbank.org/"
+           targetNamespace="http://childes.talkbank.org/"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <xs:import namespace="http://purl.org/dc/elements/1.1/"
+    schemaLocation="http://www.language-archives.org/OLAC/1.0/dc.xsd"/>
+
+  <xs:annotation>
+    <xs:appinfo>
+      <olac-extension xmlns="http://www.language-archives.org/OLAC/1.0/olac-extension.xsd">
+        <shortName>participant</shortName>
+        <longName>Codes for categorizing participants</longName>
+        <versionDate>2002-12-02</versionDate>
+        <description>
+          A hypothetical 3rd party extension for the CHILDES project, to permit
+          age, sex and education of the participant to be represented, from section
+          4.2 of the CHAT Manual.
+
+          AGE: This header specifies a speaker's age in years, months,
+          and days, given in the form years;months.days as in 2;11.17
+          for 2 years, 11 months, and 17 days.  To represent a range
+          of several days for a given transcript, use this format:
+          2;11.17 - 2;11.28. Note that the dash is surrounded by
+          spaces.  If you do not know the child's age in days, you can
+          simply use years and months.  If you do not know the months,
+          you can use this form: 6;
+
+          SEX: This header indicates the gender of the speaker, as
+          female or male.
+
+          EDUCATION: This header specifies the speaker's highest grade
+          level in school. Education is indicated by the integers from
+          0 to 20, where the numbers after 12 indicate years of
+          college. For example, if the speaker was in the second year
+          of graduate school, this would be represented as 18.
+        </description>
+        <appliesTo>contributor</appliesTo>
+        <documentation>http://childes.talkbank.org/manuals/CHAT.pdf</documentation>
+      </olac-extension>
+    </xs:appinfo>
+  </xs:annotation>
+
+  <xs:complexType name="participant">
+    <xs:complexContent mixed="true">
+      <xs:extension base="dc:SimpleLiteral">
+        <xs:attribute name="age" type="childes-age" use="required"/>
+        <xs:attribute name="sex" type="childes-sex" use="optional"/>
+        <xs:attribute name="education" type="childes-education" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="childes-age">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9]?[0-9]?(;[0-9][0-9]?(.[0-9][0-9]?)?)?([ ]?-[ ]?[0-9][0-9]?[0-9]?(;[0-9][0-9]?(.[0-9][0-9]?)?)?)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="childes-sex">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="female"/>
+      <xs:enumeration value="male"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="childes-education">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-2]?[0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

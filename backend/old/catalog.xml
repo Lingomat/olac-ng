@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <system systemId="http://www.language-archives.org/OLAC/1.1/static-repository.xsd" uri="./xsd/static-repository.xsd"/>
+    <system systemId="http://www.language-archives.org/OLAC/1.1/olac.xsd" uri="./xsd/olac.xsd"/>
+    <system systemId="http://www.language-archives.org/OLAC/1.1/dc.xsd" uri="./xsd/dc.xsd"/>
+    <system systemId="http://www.language-archives.org/OLAC/1.1/dcterms.xsd" uri="./xsd/dcterms.xsd"/>
+    <system systemId="http://childes.talkbank.org/" uri="./xsd/childes.xsd"/>
+    <rewriteSystem systemIdStartString="http://www.language-archives.org/OLAC/1.1/"  rewritePrefix=".xsd/"/>
+</catalog>

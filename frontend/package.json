@@ -1,0 +1,45 @@
+{
+    "name": "olac-web",
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
+        "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+        "clean": "rm -rf .svelte-kit .vercel_build_output build node_modules",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-node": "^1.0.0",
+        "@sveltejs/kit": "^1.0.0",
+        "@tailwindcss/typography": "0.5.7",
+        "autoprefixer": "10.4.13",
+        "cssnano": "5.1.14",
+        "daisyui": "2.36.1",
+        "install": "^0.13.0",
+        "mdsvex": "0.10.6",
+        "mdsvex-relative-images": "1.0.3",
+        "mongodb": "^4.12.0",
+        "postcss": "8.4.18",
+        "postcss-load-config": "4.0.1",
+        "prettier": "2.7.1",
+        "prettier-plugin-svelte": "2.8.0",
+        "rehype-autolink-headings": "6.1.1",
+        "rehype-slug": "5.0.1",
+        "remark-external-links": "9.0.1",
+        "remark-reading-time": "1.0.1",
+        "svelte": "^3.54.0",
+        "tailwindcss": "3.2.1",
+        "truncate-html": "1.0.4",
+        "tslib": "^2.4.1",
+        "typescript": "^4.9.3",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/free-solid-svg-icons": "^6.2.0",
+        "svelte-fa": "^3.0.3"
+    }
+}
