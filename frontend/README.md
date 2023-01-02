@@ -1,6 +1,6 @@
 # OLAC-NG Web
 
-Remake of the OLAC web site in a modern web stack. S
+Remake of the OLAC web site in a modern web stack.
 
 ## Tech stack
 
@@ -10,4 +10,6 @@ Remake of the OLAC web site in a modern web stack. S
 
 ## Install
 
-`npm install` `npm run dev`
+`sudo npm i -g pnpm` # if it's not installed already
+`pnpm install`
+`npm run dev`
