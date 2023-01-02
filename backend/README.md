@@ -39,6 +39,8 @@ Set up deadsnakes PPA for modern Python distributions
 
 ```
 sudo apt install python3.11 python3.11-dev python3.11-venv
+cd backend
+mkdir testoutputs
 python3.11 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
