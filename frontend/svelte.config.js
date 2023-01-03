@@ -12,7 +12,8 @@ const config = {
     kit: {
         adapter: adapter(),
         alias: {
-            $lib: resolve('./src/lib')
+            $lib: resolve('./src/lib'),
+            $copy: resolve('./copy')
         },
         prerender: {
             entries: [
