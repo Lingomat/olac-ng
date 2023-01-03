@@ -1,3 +1,9 @@
+<script>
+    import Head from '$lib/components/head.svelte'
+</script>
+
+<Head title="OLAC Documents" />
+
 ## OLAC Documents
 
 This index lists all documents that are current within the OLAC document process. They are listed by type. See also <a href="documents_by_status.html">OLAC documents by status</a> and <a href="documents_by_date.html">OLAC documents by date</a>, which include documents that have been retired or withdrawn.
