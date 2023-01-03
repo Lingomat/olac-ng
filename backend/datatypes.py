@@ -61,6 +61,7 @@ class OLACRecord(TypedDict):
     _id: NotRequired[ObjectId]
     languages: NotRequired[list[str]]
     countries: NotRequired[list[str]]
+    date: NotRequired[datetime]
     id: str
     identifier: str
     datestamp: datetime

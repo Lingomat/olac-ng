@@ -9,6 +9,7 @@ from typing import cast, Any
 from filestore import FileStore
 import xmltodict
 from time import sleep
+from util import XMLDateToDatetime
 
 logging.basicConfig(filename='testoutputs/oaipmh.log',
                     encoding='utf-8', level=logging.DEBUG)
@@ -250,19 +251,23 @@ class OLACHarvester():
         }
         for record in records:
             recdict = xmltodict.parse(etree.tostring(record), process_namespaces=True, namespaces=namespaces)
-            datestamp = datetime.strptime(recdict['record']['header']['datestamp'], "%Y-%m-%d")
+            datestamp = XMLDateToDatetime(recdict['record']['header']['datestamp'])
             metadata = recdict['record']['metadata']['olac:olac']
             if metadata == None:
                 print('!!! wtf, no olac metadata?', recdict)
                 continue
+            recorddate = XMLDateToDatetime(metadata['dc:date']) if 'dc:date' in metadata else None
             self._junkMetadata(metadata)
             recordslist.append({
                 'identifier': recdict['record']['header']['identifier'],
                 'datestamp': datestamp,
-                'metadata': metadata
+                'metadata': metadata,
+                'recorddate': recorddate
             })
         return recordslist
+    
 
+       
     def _recordHarvestDynamic(self) -> tuple[list[bytes],list[dict]]:
         recordslist: list[dict] = []
         xmlcontentlist: list[bytes] = []
@@ -293,7 +298,7 @@ class OLACHarvester():
                 print('!!!', http_response.status_code, http_response.text)
             http_response.raise_for_status()
             xmlcontent: bytes = http_response.content
-            print(xmlcontent)
+            #print(xmlcontent)
             xmlelement = etree.fromstring(xmlcontent, parser=self.XMLParser)
             errorelement = xmlelement.find('.//{http://www.openarchives.org/OAI/2.0/}error')
             if errorelement != None:
@@ -307,13 +312,7 @@ class OLACHarvester():
                 './/{http://www.openarchives.org/OAI/2.0/}record')
             for record in records:
                 recdict = xmltodict.parse(etree.tostring(record), process_namespaces=True, namespaces=namespaces)
-                datestr = recdict['record']['header']['datestamp']
-                if 'T' in datestr:
-                    # screw your TZ info, it's supposed to be UTC
-                    datestamp = datetime.strptime(
-                        datestr, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-                else:
-                    datestamp = datetime.strptime(datestr, "%Y-%m-%d")
+                datestamp = XMLDateToDatetime(recdict['record']['header']['datestamp'])
                 if 'metadata' not in recdict['record']:
                     print('!!! wtf, no olac metadata?', recdict)
                     continue
@@ -321,11 +320,13 @@ class OLACHarvester():
                     print('!!! wtf, no olac:olac metadata?', recdict)
                     continue
                 metadata = recdict['record']['metadata']['olac:olac']
+                recorddate = XMLDateToDatetime(metadata['dc:date']) if 'dc:date' in metadata else None
                 self._junkMetadata(metadata)
                 recordslist.append({
                     'identifier': recdict['record']['header']['identifier'],
                     'datestamp': datestamp,
-                    'metadata': metadata
+                    'metadata': metadata,
+                    'recorddate': recorddate
                 })
             resumptionTokenElement = xmlelement.find('.//{http://www.openarchives.org/OAI/2.0/}resumptionToken')
             print('resumptionToken', resumptionTokenElement)
