@@ -48,8 +48,8 @@ class OLACDatabase:
         if "records" not in self.db.list_collection_names():
             self.records.create_index('languages', sparse=True)
             self.records.create_index('countries', sparse=True)
-            for index in self.records.list_indexes():
-                print(index)
+            # for index in self.records.list_indexes():
+            #     print(index)
 
     def _initXMLArchives(self):
         print('initialising db')

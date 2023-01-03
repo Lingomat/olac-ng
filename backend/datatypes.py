@@ -56,12 +56,12 @@ class CustomSchemaStore(TypedDict):
 
 # Records collection
 
-
 class OLACRecord(TypedDict):
     _id: NotRequired[ObjectId]
     languages: NotRequired[list[str]]
     countries: NotRequired[list[str]]
     date: NotRequired[datetime]
+    page: NotRequired[int] # the page of records for dynamic repos
     id: str
     identifier: str
     datestamp: datetime

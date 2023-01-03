@@ -1,12 +1,12 @@
 <script lang="ts">
     import type { PageData } from './$types'
     export let data: PageData
+    import { page } from '$app/stores';
     export const prerender = false
 
     const metadata = JSON.stringify(data.metadata, null, 2)
 
     const records = data.recordvals!
-    console.log('data', data)
     let showMetadata: boolean = false
 </script>
 
@@ -45,6 +45,11 @@
     >
         {showMetadata ? 'Hide raw' : 'Show raw'}
     </button>
+    <a href="/xml/{encodeURIComponent($page.params.slug)}"><button
+        class="bg-blue-500 hover:bg-blue-700 text-white mt-2 mb-2 py-2 rounded-lg w-1/6 text-center"
+    >
+        View XML
+    </button></a>
 
     {#if showMetadata}
         <div class="text-sm whitespace-pre-wrap font-mono">

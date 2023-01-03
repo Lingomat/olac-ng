@@ -262,7 +262,7 @@ class OLACHarvester():
                 'identifier': recdict['record']['header']['identifier'],
                 'datestamp': datestamp,
                 'metadata': metadata,
-                'recorddate': recorddate
+                'date': recorddate
             })
         return recordslist
     
@@ -326,7 +326,8 @@ class OLACHarvester():
                     'identifier': recdict['record']['header']['identifier'],
                     'datestamp': datestamp,
                     'metadata': metadata,
-                    'recorddate': recorddate
+                    'date': recorddate,
+                    'page': len(xmlcontentlist) - 1 # let's us find the xml fragment later
                 })
             resumptionTokenElement = xmlelement.find('.//{http://www.openarchives.org/OAI/2.0/}resumptionToken')
             print('resumptionToken', resumptionTokenElement)

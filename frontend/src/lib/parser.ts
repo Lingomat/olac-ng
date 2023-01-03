@@ -4,8 +4,19 @@ export interface OLACRecord {
     datestamp: Date
     metadata: any
     id: string
+    date?: Date
+    page?: number
     languages: string[]
     countries: string[]
+}
+
+export interface OLACArchive {
+    _id: string
+    baseURL: string
+    customSchemas: {namespace: string, schema: string}[]
+    identify: any
+    lastModified: Date
+    type: 'static' | 'dynamic'
 }
 
 export interface ParsedRecord {
