@@ -19,7 +19,7 @@ localNS = ['http://www.openarchives.org/OAI/2.0/static-repository',
            'http://www.language-archives.org/OLAC/1.1/', 'http://purl.org/dc/elements/1.1/', 'http://purl.org/dc/terms/']
 
 
-maximumAge = timedelta(days=7)
+maximumAge = timedelta(days=30)
 backoffTime = timedelta(hours=2)
 badCacheActors = ['sil.org']
 
