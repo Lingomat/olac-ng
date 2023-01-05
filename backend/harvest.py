@@ -38,6 +38,8 @@ def harvest_one(db: OLACDatabase, archive: XMLArchive, force: bool = False) -> b
         return False
     if status['validated'] is True and not force:
         print('- archive is already validated')
+    elif status['validated'] is False and len(status['validateErrors']) > 0:
+        print('- archive previously failed validation')
     else: 
         print('- validating', archivetype, 'repository')
         validator = OLACValidator(db, archive['id'])
