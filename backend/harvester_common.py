@@ -288,12 +288,15 @@ class OLACHarvester():
             else: 
                 payload['resumptionToken'] = resumptionToken
             print('- fetching', self.identifier, '-', self.baseurl, 'with', payload)
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0'
+            }
             if self.identifier in badCacheActors:
                 print('! bypassing cache for', self.identifier)
                 with disabled():
-                    http_response = requests.get(self.baseurl, params=payload)
+                    http_response = requests.get(self.baseurl, params=payload, headers=headers)
             else: 
-                http_response = self.session.get(self.baseurl, params=payload)
+                http_response = self.session.get(self.baseurl, params=payload, headers=headers)
             if http_response.status_code >=400:
                 print('!!!', http_response.status_code, http_response.text)
             http_response.raise_for_status()
@@ -334,7 +337,6 @@ class OLACHarvester():
             if resumptionTokenElement == None  or resumptionTokenElement.text == None:
                 break
             resumptionToken = resumptionTokenElement.text
-            sleep(3)
 
         return (xmlcontentlist, recordslist)
     
